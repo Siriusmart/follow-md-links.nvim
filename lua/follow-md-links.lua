@@ -217,11 +217,15 @@ end
 
 local M = {}
 
-function M.follow_link()
+function M.follow_link(open)
   local link_destination = get_link_destination()
 
   if link_destination then
     local resolved_link, link_type = resolve_link(link_destination)
+    if open and link_type == "local" then
+        link_type = "xdg-open"
+    end
+
     if link_type == "local" then
       follow_local_link(resolved_link)
     elseif link_type == "heading" then
