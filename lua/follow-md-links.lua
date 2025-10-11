@@ -223,7 +223,7 @@ function M.follow_link(open)
   if link_destination then
     local resolved_link, link_type = resolve_link(link_destination)
     if open and link_type == "local" then
-        link_type = "xdg-open"
+        link_type = "open_local"
     end
 
     if link_type == "local" then
